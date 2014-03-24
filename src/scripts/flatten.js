@@ -4,7 +4,7 @@ module.exports = function (papiItem) {
     image = papiItem.SmallImage[0].URL[0];
   }
   return {
-//    asin: papiItem.ASIN[0],
+    asin: papiItem.ASIN[0],
     url: papiItem.DetailPageURL[0],
     image: image,
     title: papiItem.ItemAttributes[0].Title[0]
