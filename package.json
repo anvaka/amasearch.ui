@@ -1,0 +1,37 @@
+{
+  "scripts": {
+    "start": "gulp",
+    "test": "tape test/*.js",
+    "testbro": "browserify test/*.js > test/bundle.js && open test/runner.html"
+  },
+  "devDependencies": {
+    "beefy": "^1.1.0",
+    "mocha": "^1.18.2",
+    "zuul": "^1.5.4",
+    "browserify": "^3.33.0",
+    "gulp": "^3.5.6",
+    "gulp-less": "^1.2.3",
+    "gulp-concat": "^2.2.0",
+    "node-static": "^0.7.3",
+    "tape": "^2.12.0"
+  },
+  "testling": {
+    "files": "test/*.js",
+    "browsers": [
+      "ie/6..latest",
+      "chrome/22..latest",
+      "firefox/16..latest",
+      "safari/latest",
+      "opera/11.0..latest",
+      "iphone/6",
+      "ipad/6",
+      "android-browser/latest"
+    ]
+  },
+  "dependencies": {
+    "twitter-bootstrap-3.0.0": "^3.0.0",
+    "an": "0.0.2",
+    "typeahead.an": "0.0.2",
+    "angular": "^1.2.10"
+  }
+}
