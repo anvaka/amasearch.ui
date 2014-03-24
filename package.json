@@ -1,6 +1,7 @@
 {
   "scripts": {
     "start": "gulp",
+    "cover": "istanbul cover ./test/flatten.js",
     "testlocal": "zuul --local 8080 --ui tape -- ./test/flatten.js",
     "test": "zuul -- ./test/flatten.js"
   },
