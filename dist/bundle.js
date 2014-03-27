@@ -645,24 +645,11 @@ require('typeahead.an');
 require('an').controller(AppController);
 
 function AppController($scope, $http) {
-  $scope.formatProduct = function (model) {
-   if (typeof  model === 'string') {
-      return model;
-    }
-    return model && model.title;
-  };
-
-  $scope.getProduct = function (val) {
-      return $http.get( 'http://amasearch.herokuapp.com/', {
-        params: { keywords:val }
-      }).then(function (res) {
-        if (res.data) return res.data.map(flatten);
-      });
-    };
+  $scope.getProduct = require('./papiClient')($http);
 }
 
-
-function flatten(papiItem) {
+},{"./papiClient":17,"an":1,"typeahead.an":7}],15:[function(require,module,exports){
+module.exports = function flatten(papiItem) {
   var image = 'http://images.amazon.com/images/P/' + papiItem.ASIN[0] + '.01.jpg';
   return {
     asin: papiItem.ASIN[0],
@@ -673,9 +660,9 @@ function flatten(papiItem) {
       return this.title;
     }
   };
-}
+};
 
-},{"an":1,"typeahead.an":7}],15:[function(require,module,exports){
+},{}],16:[function(require,module,exports){
 require('./appController');
 
 var ngApp = angular.module('brog', []);
@@ -686,4 +673,17 @@ angular.bootstrap(document, [ngApp.name]);
 
 module.exports = ngApp;
 
-},{"./appController":14,"an":1}]},{},[15])
+},{"./appController":14,"an":1}],17:[function(require,module,exports){
+var flatten = require('./flatten');
+
+module.exports = function (http) {
+  return function (val) {
+      return http.get( 'http://amasearch.herokuapp.com/', {
+        params: { keywords:val }
+      }).then(function (res) {
+        if (res.data) return res.data.map(flatten);
+      });
+    };
+};
+
+},{"./flatten":15}]},{},[16])
