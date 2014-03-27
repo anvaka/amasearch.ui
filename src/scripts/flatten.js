@@ -1,3 +1,4 @@
+
 module.exports = function (papiItem) {
   var image = 'http://g-ecx.images-amazon.com/images/G/01/x-site/icons/no-img-sm.gif';
   if (papiItem.SmallImage) {

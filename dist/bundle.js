@@ -640,10 +640,9 @@ module.exports = function (document, window) {
 };
 
 },{}],14:[function(require,module,exports){
-require('an').controller(AppController);
+require('typeahead.an');
 
-var config = require('./config');
-var flatten = require('./flatten');
+require('an').controller(AppController);
 
 function AppController($scope, $http) {
   $scope.formatProduct = function (model) {
@@ -654,50 +653,37 @@ function AppController($scope, $http) {
   };
 
   $scope.getProduct = function (val) {
-      return $http.get(config.amasearch, {
-        params: {
-          keywords:val,
-          searchIndex: 'Books',
-          responseGroup: 'Images,ItemAttributes'
-        }
+      return $http.get( 'http://amasearch.herokuapp.com/', {
+        params: { keywords:val }
       }).then(function (res) {
-        var products = [];
-
-        for (var i = 0; i < res.data.length; ++i) {
-          products.push(flatten(res.data[i]));
-        }
-
-        return products;
+        if (res.data) return res.data.map(flatten);
       });
     };
 }
 
-},{"./config":15,"./flatten":16,"an":1}],15:[function(require,module,exports){
-module.exports.amasearch = 'http://amasearch.herokuapp.com/';
 
-},{}],16:[function(require,module,exports){
-module.exports = function (papiItem) {
-  var image = 'http://g-ecx.images-amazon.com/images/G/01/x-site/icons/no-img-sm.gif';
-  if (papiItem.SmallImage) {
-    image = papiItem.SmallImage[0].URL[0];
-  }
+function flatten(papiItem) {
+  var image = 'http://images.amazon.com/images/P/' + papiItem.ASIN[0] + '.01.jpg';
   return {
     asin: papiItem.ASIN[0],
     url: papiItem.DetailPageURL[0],
     image: image,
-    title: papiItem.ItemAttributes[0].Title[0]
+    title: papiItem.ItemAttributes[0].Title[0],
+    toString: function () {
+      return this.title;
+    }
   };
-};
+}
 
-},{}],17:[function(require,module,exports){
-require('typeahead.an');
-require('./appControler');
+},{"an":1,"typeahead.an":7}],15:[function(require,module,exports){
+require('./appController');
 
-var ngApp = angular.module('myApp', []);
+var ngApp = angular.module('brog', []);
 
 require('an').flush(ngApp);
 
 angular.bootstrap(document, [ngApp.name]);
 
+module.exports = ngApp;
 
-},{"./appControler":14,"an":1,"typeahead.an":7}]},{},[17])
+},{"./appController":14,"an":1}]},{},[15])

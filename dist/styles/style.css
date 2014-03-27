@@ -5954,10 +5954,6 @@ td.visible-print {
     display: none !important;
   }
 }
-.typeahead-container ul {
-  width: 540px;
-  overflow: hidden;
-}
-.typeahead-container ul > li > a {
-  white-space: normal;
+body {
+  padding-top: 10px;
 }

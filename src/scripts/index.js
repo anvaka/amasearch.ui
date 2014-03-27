@@ -1,9 +1,9 @@
-require('typeahead.an');
-require('./appControler');
+require('./appController');
 
-var ngApp = angular.module('myApp', []);
+var ngApp = angular.module('brog', []);
 
 require('an').flush(ngApp);
 
 angular.bootstrap(document, [ngApp.name]);
 
+module.exports = ngApp;

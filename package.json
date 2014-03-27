@@ -14,7 +14,8 @@
     "gulp-less": "^1.2.3",
     "gulp-concat": "^2.2.0",
     "node-static": "^0.7.3",
-    "tape": "^2.12.0"
+    "tape": "^2.12.0",
+    "gulp-util": "^2.2.14"
   },
   "dependencies": {
     "twitter-bootstrap-3.0.0": "^3.0.0",

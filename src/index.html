@@ -2,31 +2,23 @@
 <html>
   <head>
     <meta http-equiv="content-type" content="text/html; charset=utf-8" />
-    <meta name="author" content="Andrei Kashcha">
     <title>Awesome website</title>
     <link rel="stylesheet" type="text/css" href="styles/style.css">
   </head>
   <body ng-controller='AppController'>
-    <div class='container'>
-      <h2>Search Books</h2>
-      <div class='col-md-6 typeahead-container'>
-        <input type="text" ng-model="addressModel" placeholder="What do you like to read?"
-               autofocus
+    <form class='container'>
+        <input autofocus type="text" placeholder='What do you like to read?' class='form-control col-md-6'
+               ng-model="addressModel"
+               typeahead-wait-ms="300"
                typeahead-template-url="productMatch.html"
-               typeahead-input-formatter="formatProduct($model)"
-               typeahead="product for product in getProduct($viewValue)"
-               class="form-control">
+               typeahead="product for product in getProduct($viewValue)" />
         <script type="text/ng-template" id="productMatch.html">
           <a>
             <img ng-src={{match.model.image}} width='25px'>
             <span>{{match.model.title}}</span>
           </a>
         </script>
-        <hr>
-      <p>
-      </p>
-      </div>
-    </div>
+    </form>
     <script src='external.min.js' type="text/javascript" charset="utf-8">
     </script>
     <script src='bundle.js' type="text/javascript" charset="utf-8">

@@ -1,4 +1,5 @@
 var gulp = require('gulp'),
+    gutil = require('gulp-util'),
     path = require('path');
 
 var paths = {
@@ -13,7 +14,7 @@ gulp.task('copyDist', copyDist);
 gulp.task('watchChanges', watchChanges);
 gulp.task('startStaticServer', startStaticServer);
 
-gulp.task('build', ['runBrowserify', 'copyDist']);
+gulp.task('build', ['runBrowserify', 'copyDist', 'compileLess']);
 gulp.task('default', ['build', 'startStaticServer', 'watchChanges']);
 
 function runBrowserify() {
@@ -48,7 +49,7 @@ function watchChanges() {
   gulp.watch('src/styles/*.less', ['compileLess']);
 }
 
-function startStaticServer(next) {
+function startStaticServer() {
   var staticS = require('node-static'),
       server = new staticS.Server('./dist'),
       port = 31337;
@@ -57,5 +58,7 @@ function startStaticServer(next) {
     request.addListener('end', function () {
       server.serve(request, response);
     }).resume();
-  }).listen(port, next);
+  }).listen(port, function (err) {
+    gutil.log("opened server on http://127.0.0.1:" + port);
+  });
 }
