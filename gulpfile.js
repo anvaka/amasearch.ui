@@ -16,11 +16,12 @@ var paths = {
 
 gulp.task('runBrowserify', runBrowserify);
 gulp.task('compileLess', compileLess);
+gulp.task('makeDist', makeDist);
 gulp.task('copyDist', copyDist);
 gulp.task('watchChanges', watchChanges);
 gulp.task('startStaticServer', startStaticServer);
 
-gulp.task('build', ['runBrowserify', 'copyDist', 'compileLess']);
+gulp.task('build', ['makeDist', 'runBrowserify', 'copyDist', 'compileLess']);
 gulp.task('default', ['build', 'startStaticServer', 'watchChanges']);
 
 function runBrowserify() {
@@ -36,6 +37,13 @@ function compileLess() {
 	gulp.src('src/styles/style.less')
 		.pipe(less(paths.styles))
 		.pipe(gulp.dest('dist/styles'));
+}
+
+function makeDist() {
+  var fs = require('fs');
+  if (!fs.existsSync('./dist')) {
+    fs.mkdirSync('./dist');
+  }
 }
 
 function copyDist() {
