@@ -55,6 +55,9 @@ function copyDist() {
   gulp.src('./node_modules/angular/lib/angular.min.js')
       .pipe(concat('external.min.js'))
       .pipe(gulp.dest('./dist'));
+
+  gulp.src('./node_modules/twitter-bootstrap-3.0.0/fonts/*')
+      .pipe(gulp.dest('./dist/fonts/'));
 }
 
 function watchChanges() {
