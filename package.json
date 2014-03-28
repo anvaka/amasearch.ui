@@ -3,6 +3,7 @@
     "start": "gulp",
     "cover": "istanbul cover ./test/flatten.js",
     "testlocal": "zuul --local 8080 --ui tape -- ./test/*.js",
+    "deploy": "./deploy-ghpages.sh",
     "test": "zuul -- ./test/*.js"
   },
   "devDependencies": {
