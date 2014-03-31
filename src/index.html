@@ -6,22 +6,10 @@
     <link rel="stylesheet" type="text/css" href="styles/style.css">
   </head>
   <body ng-controller='AppController'>
-    <form class='container'>
-      <h2>Book finder</h2>
-        <input autofocus type="text" placeholder='What do you like to read?' class='form-control col-md-6'
-               ng-model="addressModel"
-               typeahead-wait-ms="300"
-               typeahead-loading="loadingProducts"
-               typeahead-template-url="productMatch.html"
-               typeahead="product for product in getProduct($viewValue)" />
-        <i ng-show="loadingProducts" class="glyphicon glyphicon-refresh">Loading...</i>
-        <script type="text/ng-template" id="productMatch.html">
-          <a>
-            <img ng-src={{match.model.image}} width='25px'>
-            <span>{{match.model.title}}</span>
-          </a>
-        </script>
-    </form>
+  <div class='container'>
+    <h2>What do you like to read?</h2>
+    <amazon-search transform='addPrice'></amazon-search>
+  </div>
     <script src='external.min.js' type="text/javascript" charset="utf-8">
     </script>
     <script src='bundle.js' type="text/javascript" charset="utf-8">

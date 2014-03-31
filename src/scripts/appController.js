@@ -1,7 +1,7 @@
-require('typeahead.an');
+require('amasuggest');
 
 require('an').controller(AppController);
 
 function AppController($scope, $http) {
-  $scope.getProduct = require('./papiClient')($http);
+  $scope.addPrice = require('./transformProduct');
 }

@@ -1,7 +1,7 @@
 {
   "scripts": {
     "start": "gulp",
-    "cover": "istanbul cover ./test/flatten.js",
+    "cover": "istanbul cover ./test/*.js",
     "testlocal": "zuul --local 8080 --ui tape -- ./test/*.js",
     "deploy": "./deploy-ghpages.sh",
     "test": "zuul -- ./test/*.js"
@@ -25,6 +25,7 @@
     "twitter-bootstrap-3.0.0": "^3.0.0",
     "an": "0.0.2",
     "typeahead.an": "0.0.2",
-    "angular": "^1.2.10"
+    "angular": "^1.2.10",
+    "amasuggest": "0.0.0"
   }
 }
