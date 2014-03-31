@@ -1,4 +1,5 @@
 ui: tape
+name: Amazon Product Advertising API
 browsers:
   - name: chrome
     version: 27..latest
