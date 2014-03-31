@@ -26,6 +26,6 @@
     "an": "0.0.2",
     "typeahead.an": "0.0.2",
     "angular": "^1.2.10",
-    "amasuggest": "0.0.0"
+    "amasuggest": "~0.0.0"
   }
 }
