@@ -19,7 +19,8 @@
     "gulp-util": "^2.2.14",
     "express": "^3.5.1",
     "connect-livereload": "^0.3.2",
-    "tiny-lr": "0.0.5"
+    "tiny-lr": "0.0.5",
+    "yargs": "^1.2.1"
   },
   "dependencies": {
     "twitter-bootstrap-3.0.0": "^3.0.0",
